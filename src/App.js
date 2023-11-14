@@ -13,7 +13,16 @@ import './App.css'
 
 const App = () => {
   // variable will come from context
-  const { activeMenu, themeSettings, setThemeSettings, currentColor, currentMode } = useStateContext();
+  const { activeMenu, themeSettings, setThemeSettings, currentColor, currentMode, setCurrentColor, setCurrentMode } = useStateContext();
+
+  // useEffect(() => {
+  //   const currentThemeColor = localStorage.getItem('colorMode');
+  //   const currentThemeMode = localStorage.getItem('themeMode');
+  //   if (currentThemeColor && currentThemeMode) {
+  //     setCurrentColor(currentThemeColor);
+  //     setCurrentMode(currentThemeMode);
+  //   }
+  // }, []);
 
   return (
     <div className={currentMode === 'Dark' ? 'dark' : ''}>
@@ -51,7 +60,6 @@ const App = () => {
               <Navbar />
             </div>
 
-
             <div>
               {/* // only show theme settings if it is currently true */}
               {themeSettings && <ThemeSettings />}
@@ -83,6 +91,7 @@ const App = () => {
                 <Route  path='/stacked' element={<Stacked />} />
               </Routes>
             </div>
+            <Footer />
           </div>
         </div>
       </BrowserRouter>
